@@ -28,7 +28,7 @@ def search():
     # スクレイピング
     scraping.mercariSearch(keyword, category_root,
                            category_child, scope, sort_order)
-    return render_template('result.html')
+    return render_template('category.html')
 
 
 if __name__ == "__main__":
