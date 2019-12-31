@@ -9,7 +9,9 @@
     <label>
       <span>キーワードを入力</span>
     </label>
-    <p><input type="search" name="keyword" value="" size="" maxlength="" /></p>
+    <p>
+      <input type="search" name="keyword" value="" size="25" maxlength="" />
+    </p>
     {% block select %} {% endblock %}
     <p><input type="button" class="btn btn-success" value="OK" /></p>
   </form>
@@ -22,7 +24,7 @@
     //alert( $("input[type=checkbox]").prop("checked") );
     $("#search-form > p:nth-child(4) > input").click(function() {
       if ($("input[name='keyword']").val() == "") {
-        alert("キーワードが入力されていません。");
+        alert("キーワードを入力してください。");
       } else {
         if ($("#search-form > div > div.select-wrap > select").val() == "") {
           alert("カテゴリーを選択してください。");
