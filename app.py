@@ -5,12 +5,12 @@ import scraping
 # Flaskオブジェクトの生成
 app = Flask(__name__)
 
-# 「/」へアクセスがあった場合に、"Hello World"の文字列を返す
+# 「/」へアクセスがあった場合
 @app.route('/')
 def hello():
     return render_template('category.html')
 
-
+# 「/search/」へアクセスがあった場合
 @app.route('/search/', methods=["GET", "POST"])
 def search():
     # GETの受け取り
@@ -28,7 +28,8 @@ def search():
     # スクレイピング
     scraping.mercariSearch(keyword, category_root,
                            category_child, scope, sort_order)
-    return render_template('result.html')
+
+    return render_template('graph.html')
 
 
 if __name__ == "__main__":

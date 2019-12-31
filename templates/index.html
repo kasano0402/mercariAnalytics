@@ -4,16 +4,24 @@
 <!-- 個別のhtml -->
 {% block content %}
 <!--サイトの中身-->
-<div class="container-fluid">
-  <form action="/search/" method="GET" , id="search-form">
-    <label>
-      <span>キーワードを入力</span>
-    </label>
-    <p>
-      <input type="search" name="keyword" value="" size="25" maxlength="" />
-    </p>
+<div class="input">
+  <p class="input-title" align="center">Input</p>
+  <form class="form1" action="/search/" method="GET" , id="search-form">
+    <input
+      class="input-search"
+      type="search"
+      name="keyword"
+      placeholder="商品名"
+    />
     {% block select %} {% endblock %}
-    <p><input type="button" class="btn btn-success" value="OK" /></p>
+    <a
+      class="submit"
+      style="text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #ffffff;
+    text-decoration: none;"
+      align="center"
+      >OK</a
+    >
   </form>
 </div>
 
@@ -21,13 +29,12 @@
 <script src="//www-mercari-jp.akamaized.net/assets/js/app.js?1000309418"></script>
 <script>
   $(function() {
-    //alert( $("input[type=checkbox]").prop("checked") );
-    $("#search-form > p:nth-child(4) > input").click(function() {
-      if ($("input[name='keyword']").val() == "") {
-        alert("キーワードを入力してください。");
+    $("#search-form > a").click(function() {
+      if ($("#search-form > input").val() == "") {
+        alert("商品名を入力してください。");
       } else {
         if ($("#search-form > div > div.select-wrap > select").val() == "") {
-          alert("カテゴリーを選択してください。");
+          alert("カテゴリを選択してください。");
         } else {
           $("#search-form").submit();
         }
