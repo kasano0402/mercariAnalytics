@@ -1,0 +1,245 @@
+{% extends "index.html" %} {% block select %}
+<div class="form-group">
+  <label>
+    <span>カテゴリーを選択</span>
+  </label>
+  <div class="select-wrap" data-search="parent">
+    <select name="category_root" class="select-default">
+      <option value="">すべて</option>
+      <option value="1" data-root-id="1">レディース</option>
+      <option value="2" data-root-id="2">メンズ</option>
+      <option value="3" data-root-id="3">ベビー・キッズ</option>
+      <option value="4" data-root-id="4">インテリア・住まい・小物</option>
+      <option value="5" data-root-id="5">本・音楽・ゲーム</option>
+      <option value="1328" data-root-id="1328">おもちゃ・ホビー・グッズ</option>
+      <option value="6" data-root-id="6">コスメ・香水・美容</option>
+      <option value="7" data-root-id="7">家電・スマホ・カメラ</option>
+      <option value="8" data-root-id="8">スポーツ・レジャー</option>
+      <option value="9" data-root-id="9">ハンドメイド</option>
+      <option value="1027" data-root-id="1027">チケット</option>
+      <option value="1318" data-root-id="1318">自動車・オートバイ</option>
+      <option value="10" data-root-id="10">その他</option>
+    </select>
+  </div>
+  <div data-search="child">
+    <div class="select-wrap select-category-child is-show" data-root-id="1">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="11" data-child-id="11">トップス</option>
+        <option value="12" data-child-id="12">ジャケット/アウター</option>
+        <option value="13" data-child-id="13">パンツ</option>
+        <option value="14" data-child-id="14">スカート</option>
+        <option value="15" data-child-id="15">ワンピース</option>
+        <option value="16" data-child-id="16">靴</option>
+        <option value="17" data-child-id="17">ルームウェア/パジャマ</option>
+        <option value="18" data-child-id="18">レッグウェア</option>
+        <option value="19" data-child-id="19">帽子</option>
+        <option value="20" data-child-id="20">バッグ</option>
+        <option value="21" data-child-id="21">アクセサリー</option>
+        <option value="22" data-child-id="22">ヘアアクセサリー</option>
+        <option value="23" data-child-id="23">小物</option>
+        <option value="24" data-child-id="24">時計</option>
+        <option value="25" data-child-id="25">ウィッグ/エクステ</option>
+        <option value="26" data-child-id="26">浴衣/水着</option>
+        <option value="27" data-child-id="27">スーツ/フォーマル/ドレス</option>
+        <option value="28" data-child-id="28">マタニティ</option>
+        <option value="29" data-child-id="29">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="2">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="30" data-child-id="30">トップス</option>
+        <option value="31" data-child-id="31">ジャケット/アウター</option>
+        <option value="32" data-child-id="32">パンツ</option>
+        <option value="33" data-child-id="33">靴</option>
+        <option value="34" data-child-id="34">バッグ</option>
+        <option value="35" data-child-id="35">スーツ</option>
+        <option value="36" data-child-id="36">帽子</option>
+        <option value="37" data-child-id="37">アクセサリー</option>
+        <option value="38" data-child-id="38">小物</option>
+        <option value="39" data-child-id="39">時計</option>
+        <option value="40" data-child-id="40">水着</option>
+        <option value="41" data-child-id="41">レッグウェア</option>
+        <option value="42" data-child-id="42">アンダーウェア</option>
+        <option value="43" data-child-id="43">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="3">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="44" data-child-id="44">ベビー服(女の子用) ~95cm</option>
+        <option value="1107" data-child-id="1107"
+          >ベビー服(男の子用) ~95cm</option
+        >
+        <option value="1307" data-child-id="1307"
+          >ベビー服(男女兼用) ~95cm</option
+        >
+        <option value="45" data-child-id="45">キッズ服(女の子用) 100cm~</option>
+        <option value="46" data-child-id="46">キッズ服(男の子用) 100cm~</option>
+        <option value="47" data-child-id="47">キッズ服(男女兼用) 100cm~</option>
+        <option value="48" data-child-id="48">キッズ靴</option>
+        <option value="49" data-child-id="49">子ども用ファッション小物</option>
+        <option value="50" data-child-id="50">おむつ/トイレ/バス</option>
+        <option value="51" data-child-id="51">外出/移動用品</option>
+        <option value="52" data-child-id="52">授乳/食事</option>
+        <option value="53" data-child-id="53">ベビー家具/寝具/室内用品</option>
+        <option value="54" data-child-id="54">おもちゃ</option>
+        <option value="55" data-child-id="55">行事/記念品</option>
+        <option value="56" data-child-id="56">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="4">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="57" data-child-id="57">キッチン/食器</option>
+        <option value="58" data-child-id="58">ベッド/マットレス</option>
+        <option value="59" data-child-id="59">ソファ/ソファベッド</option>
+        <option value="60" data-child-id="60">椅子/チェア</option>
+        <option value="61" data-child-id="61">机/テーブル</option>
+        <option value="62" data-child-id="62">収納家具</option>
+        <option value="63" data-child-id="63">ラグ/カーペット/マット</option>
+        <option value="64" data-child-id="64">カーテン/ブラインド</option>
+        <option value="65" data-child-id="65">ライト/照明</option>
+        <option value="66" data-child-id="66">寝具</option>
+        <option value="67" data-child-id="67">インテリア小物</option>
+        <option value="68" data-child-id="68">季節/年中行事</option>
+        <option value="70" data-child-id="70">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="5">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="72" data-child-id="72">本</option>
+        <option value="71" data-child-id="71">漫画</option>
+        <option value="73" data-child-id="73">雑誌</option>
+        <option value="75" data-child-id="75">CD</option>
+        <option value="74" data-child-id="74">DVD/ブルーレイ</option>
+        <option value="1160" data-child-id="1160">レコード</option>
+        <option value="76" data-child-id="76">テレビゲーム</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="1328">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="83" data-child-id="83">おもちゃ</option>
+        <option value="77" data-child-id="77">タレントグッズ</option>
+        <option value="972" data-child-id="972">コミック/アニメグッズ</option>
+        <option value="82" data-child-id="82">トレーディングカード</option>
+        <option value="81" data-child-id="81">フィギュア</option>
+        <option value="79" data-child-id="79">楽器/器材</option>
+        <option value="114" data-child-id="114">コレクション</option>
+        <option value="80" data-child-id="80">ミリタリー</option>
+        <option value="84" data-child-id="84">美術品</option>
+        <option value="85" data-child-id="85">アート用品</option>
+        <option value="86" data-child-id="86">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="6">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="88" data-child-id="88">ベースメイク</option>
+        <option value="1387" data-child-id="1387">メイクアップ</option>
+        <option value="89" data-child-id="89">ネイルケア</option>
+        <option value="87" data-child-id="87">香水</option>
+        <option value="1263" data-child-id="1263">スキンケア/基礎化粧品</option>
+        <option value="90" data-child-id="90">ヘアケア</option>
+        <option value="91" data-child-id="91">ボディケア</option>
+        <option value="92" data-child-id="92">オーラルケア</option>
+        <option value="93" data-child-id="93">リラクゼーション</option>
+        <option value="94" data-child-id="94">ダイエット</option>
+        <option value="95" data-child-id="95">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="7">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="100" data-child-id="100">スマートフォン/携帯電話</option>
+        <option value="862" data-child-id="862">スマホアクセサリー</option>
+        <option value="96" data-child-id="96">PC/タブレット</option>
+        <option value="97" data-child-id="97">カメラ</option>
+        <option value="98" data-child-id="98">テレビ/映像機器</option>
+        <option value="99" data-child-id="99">オーディオ機器</option>
+        <option value="1237" data-child-id="1237">美容/健康</option>
+        <option value="1243" data-child-id="1243">冷暖房/空調</option>
+        <option value="101" data-child-id="101">生活家電</option>
+        <option value="102" data-child-id="102">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="8">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="1183" data-child-id="1183">ゴルフ</option>
+        <option value="1172" data-child-id="1172">フィッシング</option>
+        <option value="1139" data-child-id="1139">自転車</option>
+        <option value="1153" data-child-id="1153"
+          >トレーニング/エクササイズ</option
+        >
+        <option value="884" data-child-id="884">野球</option>
+        <option value="885" data-child-id="885">サッカー/フットサル</option>
+        <option value="892" data-child-id="892">テニス</option>
+        <option value="104" data-child-id="104">スノーボード</option>
+        <option value="1216" data-child-id="1216">スキー</option>
+        <option value="103" data-child-id="103">その他スポーツ</option>
+        <option value="1164" data-child-id="1164">アウトドア</option>
+        <option value="105" data-child-id="105">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="9">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="914" data-child-id="914">アクセサリー(女性用)</option>
+        <option value="106" data-child-id="106">ファッション/小物</option>
+        <option value="107" data-child-id="107">アクセサリー/時計</option>
+        <option value="108" data-child-id="108">日用品/インテリア</option>
+        <option value="109" data-child-id="109">趣味/おもちゃ</option>
+        <option value="110" data-child-id="110">キッズ/ベビー</option>
+        <option value="1097" data-child-id="1097">素材/材料</option>
+        <option value="1319" data-child-id="1319">二次創作物</option>
+        <option value="111" data-child-id="111">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="1027">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="1028" data-child-id="1028">音楽 </option>
+        <option value="1037" data-child-id="1037">スポーツ</option>
+        <option value="1049" data-child-id="1049">演劇/芸能</option>
+        <option value="1059" data-child-id="1059">イベント</option>
+        <option value="1064" data-child-id="1064">映画</option>
+        <option value="1068" data-child-id="1068">施設利用券</option>
+        <option value="1079" data-child-id="1079">優待券/割引券</option>
+        <option value="1089" data-child-id="1089">その他</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="1318">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="1329" data-child-id="1329">自動車本体</option>
+        <option value="1330" data-child-id="1330">自動車タイヤ/ホイール</option>
+        <option value="946" data-child-id="946">自動車パーツ</option>
+        <option value="115" data-child-id="115">自動車アクセサリー</option>
+        <option value="949" data-child-id="949">オートバイ車体</option>
+        <option value="951" data-child-id="951">オートバイパーツ</option>
+        <option value="116" data-child-id="116">オートバイアクセサリー</option>
+      </select>
+    </div>
+    <div class="select-wrap select-category-child" data-root-id="10">
+      <select name="category_child" class="select-default" disabled="">
+        <option value="">すべて</option>
+        <option value="1108" data-child-id="1108">まとめ売り</option>
+        <option value="69" data-child-id="69">ペット用品</option>
+        <option value="112" data-child-id="112">食品</option>
+        <option value="929" data-child-id="929">飲料/酒</option>
+        <option value="113" data-child-id="113">日用品/生活雑貨/旅行</option>
+        <option value="1256" data-child-id="1256"
+          >アンティーク/コレクション</option
+        >
+        <option value="1151" data-child-id="1151">文房具/事務用品</option>
+        <option value="117" data-child-id="117">事務/店舗用品</option>
+        <option value="118" data-child-id="118">その他</option>
+      </select>
+    </div>
+  </div>
+</div>
+{% endblock %}

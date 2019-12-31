@@ -1,0 +1,14 @@
+.select-default:disabled {
+  background: #f5f5f5;
+  display: none;
+}
+
+.select-category-child,
+.select-category-grand-child {
+  display: none;
+}
+
+.select-category-child.is-show,
+.select-category-grand-child.is-show {
+  display: block;
+}

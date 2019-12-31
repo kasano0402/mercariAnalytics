@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MerucariPriceAnalysis</title>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+  </head>
+
+  <body>
+    <!--CSSの呼び出し-->
+    <link href="/static/css/bootstrap.css" rel="stylesheet" />
+    <link href="/static/css/main.css" rel="stylesheet" />
+
+    <!--ヘッダー-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">mercari - 相場分析サイト</a>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    <!-- ここに個別のhtmlが入る -->
+    {% endblock %}
+  </body>
+</html>

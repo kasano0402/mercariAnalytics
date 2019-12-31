@@ -1,0 +1,36 @@
+<!--レイアウトの呼び出し-->
+{% extends "layout.html" %}
+
+<!-- 個別のhtml -->
+{% block content %}
+<!--サイトの中身-->
+<div class="container-fluid">
+  <form action="/search/" method="GET" , id="search-form">
+    <label>
+      <span>キーワードを入力</span>
+    </label>
+    <p><input type="search" name="keyword" value="" size="" maxlength="" /></p>
+    {% block select %} {% endblock %}
+    <p><input type="button" class="btn btn-success" value="OK" /></p>
+  </form>
+</div>
+
+<!--スクリプトの呼び出し-->
+<script src="//www-mercari-jp.akamaized.net/assets/js/app.js?1000309418"></script>
+<script>
+  $(function() {
+    //alert( $("input[type=checkbox]").prop("checked") );
+    $("#search-form > p:nth-child(4) > input").click(function() {
+      if ($("input[name='keyword']").val() == "") {
+        alert("キーワードが入力されていません。");
+      } else {
+        if ($("#search-form > div > div.select-wrap > select").val() == "") {
+          alert("カテゴリーを選択してください。");
+        } else {
+          $("#search-form").submit();
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}
