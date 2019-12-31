@@ -8,7 +8,7 @@ app = Flask(__name__)
 # 「/」へアクセスがあった場合に、"Hello World"の文字列を返す
 @app.route('/')
 def hello():
-    return render_template('select.html')
+    return render_template('category.html')
 
 
 @app.route('/search/', methods=["GET", "POST"])
@@ -28,7 +28,7 @@ def search():
     # スクレイピング
     scraping.mercariSearch(keyword, category_root,
                            category_child, scope, sort_order)
-    return render_template('category.html')
+    return render_template('result.html')
 
 
 if __name__ == "__main__":
