@@ -1,0 +1,19 @@
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
+
+/*グラフエリア*/
+#myBarChart {
+  background-color: #ffffff;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.input-logo {
+  margin: 10px;
+  float: left;
+  display: block;
+  width: 15%;
+}

@@ -26,8 +26,8 @@ def search():
     print("category_child: ", category_child)
 
     # スクレイピング
-    scraping.mercariSearch(keyword, category_root,
-                           category_child, scope, sort_order)
+    # scraping.mercariSearch(keyword, category_root,
+    # category_child, scope, sort_order)
 
     return render_template('graph.html')
 
