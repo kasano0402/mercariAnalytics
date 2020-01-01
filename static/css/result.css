@@ -7,13 +7,36 @@ body {
 #myBarChart {
   background-color: #ffffff;
   display: block !important;
-  width: 100% !important;
+  width: 85% !important;
   height: 100% !important;
+  max-width: 800px;
+  max-height: 450px;
+  margin: 0px auto;
 }
 
 .input-logo {
-  margin: 10px;
+  margin: 13px;
   float: left;
   display: block;
-  width: 15%;
+  width: 170px;
+}
+
+.navbar {
+  position: relative;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+/*スマホ用CSS*/
+@media (max-width: 600px) {
+  .navbar {
+    min-height: 0px;
+  }
+  .input-logo {
+    margin: 10px auto;
+    float: none;
+    display: block;
+    width: 150px;
+  }
 }

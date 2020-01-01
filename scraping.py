@@ -30,11 +30,15 @@ def mercariSearch(search_word, category_root, category_child, scope,
                 'AppleWebKit/537.36 (KHTML, like Gecko) '
                 'Chrome/50.0.2661.102 Safari/537.36'}
             res = requests.get(page, headers=headers)
+            # エラーチェック
             res.raise_for_status()
+
+            # スクレイピング
             soup = bs4.BeautifulSoup(res.text, 'lxml')
             elems_name = soup.select('.items-box-name')
             elems_price = soup.select('.items-box-price')
             elems_photo = soup.select('.items-box-photo')
+
             for i in range(len(elems_name)):
                 new_elems_name = elems_name[i].text.replace(",", "")
                 new_elems_price = elems_price[i].text.replace(

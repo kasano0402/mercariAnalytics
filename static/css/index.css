@@ -32,7 +32,7 @@ form.form1 {
 }
 
 .input-logo {
-  margin: 30px auto;
+  margin: 35px auto;
   display: block;
   width: 60%;
 }
@@ -144,7 +144,7 @@ select {
 /*スマホ用CSS*/
 @media (max-width: 600px) {
   .input {
-    width: 90%;
+    width: 80%;
     min-width: 350px;
   }
 }
