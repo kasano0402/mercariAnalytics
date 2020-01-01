@@ -5,24 +5,21 @@ import re
 # 関数
 
 
-def mercariSearch(search_word, category_root, category_child, scope,
-                  sort_order):
+def mercariSearch(keyword, category_root, category_child, search_scope):
     """メルカリで検索する関数
     Arguments:
-        search_word {string} -- 検索文字列
+        keyword {string} -- 検索文字列
         category_root {int} -- カテゴリID（親）
         category_child {int} -- カテゴリID（子）
-        scope {int} -- 検索範囲
-        sort_order {string} -- 検索結果表示順序
+        search_scope {int} -- 検索範囲
     """
     pagelist = []
-    for i in range(1, scope):
-        page = 'https://www.mercari.com/jp/search/?page={0}&sort_order={1}&keyword={2} & category_root = {3} & category_child = {4}'.format(
-            str(i), sort_order, search_word, category_root, category_child)
+    for i in range(1, search_scope):
+        page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}'.format(
+            str(i), keyword, category_root, category_child)
         pagelist.append(page)
 
-    with open('product.csv', 'w', encoding="utf-8") as f:
-        f.write('name,price,elem' + "\n")
+        resultlist = [["name", "price", "status", "link", "photo"]]
         for page in pagelist:
             headers = {
                 'User-Agent':
@@ -38,6 +35,8 @@ def mercariSearch(search_word, category_root, category_child, scope,
             elems_name = soup.select('.items-box-name')
             elems_price = soup.select('.items-box-price')
             elems_photo = soup.select('.items-box-photo')
+            elems_url = soup.select('.items-box > a')
+            elems_photo_url = soup.select('.items-box-photo > img')
 
             for i in range(len(elems_name)):
                 new_elems_name = elems_name[i].text.replace(",", "")
@@ -45,20 +44,23 @@ def mercariSearch(search_word, category_root, category_child, scope,
                     ",", "").replace("¥ ", "")
                 new_elems_photo = re.search(
                     'figcaption', str(elems_photo[i].__str__))
+                new_elems_url = elems_url[i].get("href")
+                new_elems_photo_url = elems_photo_url[i].get("data-src")
+
+                # リストに挿入
                 if new_elems_photo:
-                    f.write(new_elems_name + "," + new_elems_price +
-                            "," + new_elems_photo.group(0) + "\n")
+                    resultlist.append(
+                        [new_elems_name.replace("\u3000", ""), new_elems_price, "sold", new_elems_url, new_elems_photo_url])
                 else:
-                    f.write(new_elems_name + "," +
-                            new_elems_price + "," + "" + "\n")
+                    resultlist.append(
+                        [new_elems_name.replace("\u3000", ""), new_elems_price, "", new_elems_url, new_elems_photo_url])
+        return resultlist
 
 
 if __name__ == '__main__':
-    # ソート方法
-    sort_order = "created_desc"
 
     # 検索したいものの名前
-    search_word = input("search_word?: ")
+    keyword = input("keyword?: ")
 
     # category_root（親ID）
     category_root = input("category_root?: ")
@@ -67,9 +69,10 @@ if __name__ == '__main__':
     category_child = input("category_child?: ")
 
     # 検索範囲（ページ単位）
-    how_many_page = input("how_many_page?: ")
-    how_many_page = int(how_many_page)
+    search_scope = int(input("search_scope?: "))
 
     # 検索実行
-    mercariSearch(search_word, category_root,
-                  category_child, how_many_page, sort_order)
+    mylist = mercariSearch(keyword, category_root,
+                           category_child, search_scope)
+
+    print(*mylist, sep='\n')
