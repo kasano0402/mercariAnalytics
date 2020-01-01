@@ -3,9 +3,10 @@
 
 <!-- 個別のhtml -->
 {% block content %}
+<link href="/static/css/index.css" rel="stylesheet" media="screen" />
 <!--サイトの中身-->
 <div class="input">
-  <p class="input-title" align="center">Input</p>
+  <img class="input-logo" src="static\picture\logo.png" alt="logo" />
   <form class="form1" action="/search/" method="GET" , id="search-form">
     <input
       class="input-search"
@@ -14,14 +15,7 @@
       placeholder="商品名"
     />
     {% block select %} {% endblock %}
-    <a
-      class="submit"
-      style="text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #ffffff;
-    text-decoration: none;"
-      align="center"
-      >OK</a
-    >
+    <a class="submit" align="center">OK</a>
   </form>
 </div>
 
