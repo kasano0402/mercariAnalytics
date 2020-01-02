@@ -75,4 +75,5 @@ if __name__ == '__main__':
     mylist = mercariSearch(keyword, category_root,
                            category_child, search_scope)
 
+    # 出力
     print(*mylist, sep='\n')

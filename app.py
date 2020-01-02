@@ -17,8 +17,7 @@ def search():
     keyword = request.args.get('keyword')
     category_root = request.args.get('category_root')
     category_child = request.args.get('category_child')
-    scope = 3
-    sort_order = "created_desc"
+    search_scope = 3
 
     # デバッグ用
     print("keyword: ", keyword)
@@ -26,9 +25,9 @@ def search():
     print("category_child: ", category_child)
 
     # スクレイピング
-    # scraping.mercariSearch(keyword, category_root,
-    # category_child, scope, sort_order)
-
+    itemlist = scraping.mercariSearch(keyword, category_root,
+                                      category_child, search_scope)
+    print(*itemlist, sep='\n')
     return render_template('graph.html')
 
 
