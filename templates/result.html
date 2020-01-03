@@ -3,16 +3,27 @@
 
 <!-- 個別のhtml -->
 {% block content %}
+<!-- 個別css読み込み -->
 <link href="/static/css/result.css" rel="stylesheet" media="screen" />
+<!-- navbar -->
 <nav class="navbar navbar-default">
-  <a href="/"
-    ><img class="input-logo" src="\static\picture\logo.png" alt="logo"
-  /></a>
+  <a href="/"><img class="logo" src="\static\picture\logo.png" alt="logo"/></a>
 </nav>
+<!--コンテナ -->
 <div class="container">
-  <p class="container-title">{{itemlist|length}}</p>
-  <p class="container-title">{{keyword}}の検索結果</p>
-  <!--レイアウトの呼び出し-->
+  <p class="container-notes">直近{{itemlist|length}}件の出品から</p>
+  <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
+  <!--グラフエリア-->
   {% block graph %} {% endblock %}
+  <!--結果リストのヘッダー部分-->
+  <div class="result-header">
+    <p>購入率の高い価格帯： &yen3,000 ～ &yen4,000円</p>
+  </div>
+  <!--結果リスト-->
+  <div class="result-list">
+    {% for item in itemlist %}
+    <p>{{ item }}</p>
+    {% endfor %}
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}
