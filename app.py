@@ -1,6 +1,7 @@
 # Flaskとrender_template（HTMLを表示させるための関数）をインポート
 from flask import Flask, render_template, request
 import scraping
+import graph
 
 # Flaskオブジェクトの生成
 app = Flask(__name__)
@@ -37,8 +38,16 @@ def search():
     # 取得リストの件数確認
     print("itemlistの件数", len(itemlist))
 
+    # graph.pyの呼び出し
+    graphdata = graph.graphdata(itemlist)
+    dataText = graphdata[0]
+    labelsText = graphdata[1]
+    maxSoldNum = graphdata[2]
+
+    print("dataの中身", dataText)
+    print("labelsTextの中身", labelsText)
     # html呼び出し
-    return render_template('graph.html', keyword=keyword, itemlist=itemlist)
+    return render_template('graph.html', keyword=keyword, itemlist=itemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
 
 
 if __name__ == "__main__":

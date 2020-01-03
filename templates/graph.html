@@ -8,21 +8,12 @@
     type: 'bar',
     data: {
       labels: [
-        '\xA50~ ',
-        '\xA51,000~ ',
-        '\xA52,000~ ',
-        '\xA53,000~ ',
-        '\xA54,000~ ',
-        '\xA55,000~ ',
-        '\xA56,000~ ',
-        '\xA57,000~ ',
-        '\xA58,000~ ',
-        '\xA59,000~ '
+        {{labelsText|safe}}
       ],
       datasets: [
         {
           label: '度数',
-          data: [2, 5, 10, 23, 16, 10, 8, 7, 3, 1],
+          data: [{{dataText|safe}}],
           backgroundColor: 'rgba(219,39,91,0.5)'
         }
       ]
@@ -39,11 +30,11 @@
         yAxes: [
           {
             ticks: {
-              suggestedMax: 100,
+              suggestedMax: {{maxSoldNum|safe}},
               suggestedMin: 0,
-              stepSize: 10,
+              stepSize: 1,
               callback: function (value, index, values) {
-                return value + '人'
+                return value + ''
               }
             }
           }
