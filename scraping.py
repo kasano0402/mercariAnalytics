@@ -19,7 +19,7 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
             str(i), keyword, category_root, category_child)
         pagelist.append(page)
 
-        resultlist = [["name", "price", "status", "link", "photo"]]
+        resultlist = []
         for page in pagelist:
             headers = {
                 'User-Agent':
