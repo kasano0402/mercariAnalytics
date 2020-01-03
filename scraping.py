@@ -14,7 +14,7 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
         search_scope {int} -- 検索範囲
     """
     pagelist = []
-    for i in range(1, search_scope):
+    for i in range(0, search_scope):
         page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}'.format(
             str(i), keyword, category_root, category_child)
         pagelist.append(page)
@@ -54,7 +54,7 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
                 else:
                     resultlist.append(
                         [new_elems_name.replace("\u3000", ""), new_elems_price, "", new_elems_url, new_elems_photo_url])
-        return resultlist
+    return resultlist
 
 
 if __name__ == '__main__':
