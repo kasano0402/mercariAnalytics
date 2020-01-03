@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # 「/」へアクセスがあった場合
 @app.route('/')
-def hello():
+def main():
     return render_template('category.html')
 
 # 「/search/」へアクセスがあった場合
@@ -22,7 +22,7 @@ def search():
     # 大きくなればなるほど取得に時間がかかるのでひとまず1でよいかと
     search_scope = 1
 
-    # デバッグ用
+    # デバッグ用（getの値が正しく取得できているかどうか）
     print("keyword: ", keyword)
     print("category_root: ", category_root)
     print("category_child: ", category_child)
@@ -30,8 +30,14 @@ def search():
     # スクレイピング
     itemlist = scraping.mercariSearch(keyword, category_root,
                                       category_child, search_scope)
+
+    # 取得内容確認
     print(*itemlist, sep='\n')
+
+    # 取得リストの件数確認
     print("itemlistの件数", len(itemlist))
+
+    # html呼び出し
     return render_template('graph.html', keyword=keyword, itemlist=itemlist)
 
 
