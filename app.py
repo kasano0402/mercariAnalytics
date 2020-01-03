@@ -17,6 +17,9 @@ def search():
     keyword = request.args.get('keyword')
     category_root = request.args.get('category_root')
     category_child = request.args.get('category_child')
+    # search_scopeの値を変えるとメルカリから取得してくる商品の数が変化します。
+    # search_scope = 1で132件（132件以上商品が存在する場合）
+    # 大きくなればなるほど取得に時間がかかるのでひとまず1でよいかと
     search_scope = 1
 
     # デバッグ用
@@ -28,7 +31,7 @@ def search():
     itemlist = scraping.mercariSearch(keyword, category_root,
                                       category_child, search_scope)
     print(*itemlist, sep='\n')
-    print(len(itemlist))
+    print("itemlistの件数", len(itemlist))
     return render_template('graph.html', keyword=keyword, itemlist=itemlist)
 
 
