@@ -29,7 +29,7 @@ def search():
                                       category_child, search_scope)
 
     print(*itemlist, sep='\n')
-    return render_template('graph.html', keyword=keyword)
+    return render_template('graph.html', keyword=keyword, itemlist=itemlist)
 
 
 if __name__ == "__main__":
