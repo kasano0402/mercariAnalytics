@@ -21,8 +21,13 @@
   </div>
   <!--結果リスト-->
   <div class="result-list">
-    {% for item in itemlist %}
-    <p>{{ item }}</p>
+    {% for name, price, status, url, photo in itemlist %}
+    <div class="item">
+      <p><a href="{{url}}">{{name}}</a></p>
+      <img src="{{photo}}" />
+      <p>価格: {{price}}</p>
+      <p>状態: {{status}}</p>
+    </div>
     {% endfor %}
   </div>
   {% endblock %}
