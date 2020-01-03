@@ -24,8 +24,8 @@ body {
 /* CONTAINER STYLES
 ------------------------------------ */
 .container {
-  max-width: 80%;
-  border-top: 1px solid transparent;
+  max-width: 70%;
+  border-top: 0px solid transparent;
 }
 
 /*注釈部*/
@@ -45,6 +45,8 @@ body {
   display: block;
   padding: 2%;
   border-radius: 10px;
+  width: 100% !important;
+  margin: 0px auto;
 }
 
 /* RESULT HEADER STYLES
@@ -65,10 +67,17 @@ body {
 }
 
 .item {
-  border: 1px solid;
+  border: 0px solid;
+}
+
+.item img {
+  width: 150px;
 }
 
 /* RESPONSIVE STYLES
 ------------------------------------ */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  .container {
+    max-width: 100%;
+  }
 }
