@@ -27,8 +27,9 @@ def search():
     # スクレイピング
     itemlist = scraping.mercariSearch(keyword, category_root,
                                       category_child, search_scope)
+
     print(*itemlist, sep='\n')
-    return render_template('graph.html')
+    return render_template('graph.html', keyword=keyword)
 
 
 if __name__ == "__main__":

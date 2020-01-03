@@ -5,13 +5,13 @@
 {% block content %}
 <link href="/static/css/result.css" rel="stylesheet" media="screen" />
 <nav class="navbar navbar-default">
-    <a href="/"
+  <a href="/"
     ><img class="input-logo" src="\static\picture\logo.png" alt="logo"
   /></a>
-  </nav>
-<div class="container"></div>
-<!--レイアウトの呼び出し-->
-{% block graph %} 
-{% endblock %}
+</nav>
+<div class="container">
+  {{keyword}}
+  <!--レイアウトの呼び出し-->
+  {% block graph %} {% endblock %}
 </div>
 {% endblock %}
