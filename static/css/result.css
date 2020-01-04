@@ -91,7 +91,6 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
 /* RESPONSIVE STYLES
 ------------------------------------ */
 @media (max-width: 700px) {

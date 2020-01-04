@@ -28,26 +28,31 @@ def search():
     print("category_root: ", category_root)
     print("category_child: ", category_child)
 
-    # スクレイピング
-    solditemlist = scraping.mercariSearch(keyword, category_root,
-                                          category_child, search_scope, 1)
+    # 売り切れ商品の取得
+    sold_itemlist = scraping.mercariSearch(keyword, category_root,
+                                           category_child, search_scope, 1)
+
+    # 販売中の商品の取得
+    unsold_itemlist = scraping.mercariSearch(keyword, category_root,
+                                             category_child, search_scope, 1)
 
     # 取得内容確認
-    print(*solditemlist, sep='\n')
-
-    # 取得リストの件数確認
-    print("itemlistの件数", len(solditemlist))
+    print("sold_itemlistの件数", len(sold_itemlist))
+    print(*sold_itemlist, sep='\n')
+    print("---------------------------------------------------------------------------------------")
+    print("unsold_itemlistの件数", len(unsold_itemlist))
+    print(*unsold_itemlist, sep='\n')
 
     # graph.pyの呼び出し
-    graphdata = graph.graphdata(solditemlist)
+    graphdata = graph.graphdata(sold_itemlist)
     dataText = graphdata[0]
     labelsText = graphdata[1]
     maxSoldNum = graphdata[2]
 
-    print("dataの中身", dataText)
-    print("labelsTextの中身", labelsText)
+    # print("dataの中身", dataText)
+    # print("labelsTextの中身", labelsText)
     # html呼び出し
-    return render_template('graph.html', keyword=keyword, solditemlist=solditemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
+    return render_template('graph.html', keyword=keyword, sold_itemlist=sold_itemlist, unsold_itemlist=unsold_itemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
 
 
 if __name__ == "__main__":
