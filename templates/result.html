@@ -11,28 +11,29 @@
 </nav>
 <!--コンテナ -->
 <div class="container">
-  {% if itemlist|length > 120 %}
-  <p class="container-notes">直近{{itemlist|length}}件の売り切れ商品</p>
+  {% if solditemlist|length > 120 %}
+  <p class="container-notes">直近{{solditemlist|length}}件の売り切れ商品</p>
   {% else %}
-  <p class="container-notes">{{itemlist|length}}件の売り切れ商品</p>
+  <p class="container-notes">{{solditemlist|length}}件の売り切れ商品</p>
   {% endif %}
   <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
   <!--グラフエリア-->
   {% block graph %} {% endblock %}
   <!--結果リストのヘッダー部分-->
   <div class="result-header">
-    <p>購入率の高い価格帯： &yen3,000 ～ &yen4,000円</p>
+    <p>購入率の高い価格帯： &yen3,000 ～ [[仮置き]]</p>
   </div>
   <!--結果リスト-->
   <div class="resul-list">
     <div class="row">
-      {% for name, price, status, url, photo in itemlist %}
+      {% for name, price, status, url, photo in solditemlist %}
       <div class="item">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
           <img style="background-image: url({{photo}});" src="{{photo}}" />
-          <p class="itemname"><a href="{{url}}" target="_blank">{{name}}</a></p>
-          <p>価格: {{price}}</p>
-          <p>状態: {{status}}</p>
+          <span class="itemprice">{{price}}</span>
+          <span class="itemname"
+            ><a href="{{url}}" target="_blank">{{name}}</a></span
+          >
         </div>
       </div>
       {% endfor %}
