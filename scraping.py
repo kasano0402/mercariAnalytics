@@ -13,6 +13,8 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
         category_child {int} -- カテゴリID（子）
         search_scope {int} -- 検索範囲
     """
+
+    keyword = keyword.replace(" ", "+")
     pagelist = []
     for i in range(0, search_scope):
         page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}&status_trading_sold_out=1'.format(
@@ -22,10 +24,7 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
         resultlist = []
         for page in pagelist:
             headers = {
-                'User-Agent':
-                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) '
-                'AppleWebKit/537.36 (KHTML, like Gecko) '
-                'Chrome/50.0.2661.102 Safari/537.36'}
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"}
             res = requests.get(page, headers=headers)
             # エラーチェック
             res.raise_for_status()
@@ -54,6 +53,7 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
                 else:
                     resultlist.append(
                         [new_elems_name.replace("\u3000", ""), new_elems_price, "", new_elems_url, new_elems_photo_url])
+    print("mercariURL:", page)
     return resultlist
 
 
