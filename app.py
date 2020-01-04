@@ -29,17 +29,17 @@ def search():
     print("category_child: ", category_child)
 
     # スクレイピング
-    itemlist = scraping.mercariSearch(keyword, category_root,
-                                      category_child, search_scope)
+    solditemlist = scraping.mercariSearch(keyword, category_root,
+                                          category_child, search_scope, 1)
 
     # 取得内容確認
-    print(*itemlist, sep='\n')
+    print(*solditemlist, sep='\n')
 
     # 取得リストの件数確認
-    print("itemlistの件数", len(itemlist))
+    print("itemlistの件数", len(solditemlist))
 
     # graph.pyの呼び出し
-    graphdata = graph.graphdata(itemlist)
+    graphdata = graph.graphdata(solditemlist)
     dataText = graphdata[0]
     labelsText = graphdata[1]
     maxSoldNum = graphdata[2]
@@ -47,7 +47,7 @@ def search():
     print("dataの中身", dataText)
     print("labelsTextの中身", labelsText)
     # html呼び出し
-    return render_template('graph.html', keyword=keyword, itemlist=itemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
+    return render_template('graph.html', keyword=keyword, solditemlist=solditemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
 
 
 if __name__ == "__main__":
