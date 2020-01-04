@@ -46,6 +46,8 @@ def mercariSearch(keyword, category_root, category_child, search_scope):
                 new_elems_url = elems_url[i].get("href")
                 new_elems_photo_url = elems_photo_url[i].get("data-src")
 
+                # if len(new_elems_name) > 10:
+                # new_elems_name = new_elems_name[0:31]
                 # リストに挿入
                 if new_elems_photo:
                     resultlist.append(
