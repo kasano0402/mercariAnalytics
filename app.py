@@ -36,6 +36,10 @@ def search():
     unsold_itemlist = scraping.mercariSearch(keyword, category_root,
                                              category_child, search_scope, 1)
 
+    # 取得内容の並び替え
+    sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
+    unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])
+
     # 取得内容確認
     print("sold_itemlistの件数", len(sold_itemlist))
     print(*sold_itemlist, sep='\n')
