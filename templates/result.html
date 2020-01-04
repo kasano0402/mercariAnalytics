@@ -11,7 +11,11 @@
 </nav>
 <!--コンテナ -->
 <div class="container">
-  <p class="container-notes">直近{{itemlist|length}}件の出品から</p>
+  {% if itemlist|length > 120 %}
+  <p class="container-notes">直近{{itemlist|length}}件の売り切れ商品</p>
+  {% else %}
+  <p class="container-notes">{{itemlist|length}}件の売り切れ商品</p>
+  {% endif %}
   <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
   <!--グラフエリア-->
   {% block graph %} {% endblock %}
@@ -24,7 +28,7 @@
     <div class="row">
       {% for name, price, status, url, photo in itemlist %}
       <div class="item">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-md-4 col-lg-2">
+        <div class="col-md-4">
           <p><a href="{{url}}" target="_blank">{{name}}</a></p>
           <img src="{{photo}}" />
           <p>価格: {{price}}</p>
