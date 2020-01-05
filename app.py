@@ -53,6 +53,8 @@ def search():
     labelsText = graphdata[1]
     maxSoldNum = graphdata[2]
 
+    # priceを3桁区切りに整形
+
     # print("dataの中身", dataText)
     # print("labelsTextの中身", labelsText)
     # html呼び出し
