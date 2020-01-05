@@ -46,12 +46,13 @@ def mercariSearch(keyword, category_root, category_child, search_scope, sold_flg
             for i in range(len(elems_name)):
                 new_elems_name = elems_name[i].text.replace(",", "")
                 new_elems_price = elems_price[i].text.replace(
-                    ",", "").replace("¥ ", "")
+                    ",", "").replace("¥", "")
                 new_elems_photo = re.search(
                     'figcaption', str(elems_photo[i].__str__))
                 new_elems_url = elems_url[i].get("href")
                 new_elems_photo_url = elems_photo_url[i].get("data-src")
 
+                new_elems_price = int(new_elems_price)
                 # if len(new_elems_name) > 10:
                 # new_elems_name = new_elems_name[0:31]
                 # リストに挿入
