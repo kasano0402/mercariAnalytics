@@ -11,8 +11,7 @@ def graphdata(list):
     soldElements = 0
     for x in price:
         if sold[soldElements] == 'sold':
-            tmp = x.split('¥')
-            money = int(tmp[1])
+            money = int(x)
             if maxPrice <= money:
                 maxPrice = money
         soldElements += 1
@@ -31,8 +30,7 @@ def graphdata(list):
     for x in price:
         if sold[soldElements] == 'sold':
             soldcount += 1
-            tmp = x.split('¥')
-            money = int(tmp[1])
+            money = int(x)
             dataElements = int(money/average)
             if dataElements != 10:
                 data[dataElements] += 1
