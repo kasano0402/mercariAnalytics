@@ -39,5 +39,18 @@
       {% endfor %}
     </div>
   </div>
+  <script>
+    function addFigure (str) {
+      var num = new String(str).replace(/,/g, '')
+      while (num != (num = num.replace(/^(-?\d+)(\d{3})/, '$1,$2')));
+      var str = '&yen' + num
+      return str
+    }
+    $(function () {
+      $('.itemprice').each(function () {
+        $(this).html(addFigure($(this).html()))
+      })
+    })
+  </script>
   {% endblock %}
 </div>
