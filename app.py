@@ -43,7 +43,7 @@ def search():
     # 取得内容確認
     print("sold_itemlistの件数", len(sold_itemlist))
     print(*sold_itemlist, sep='\n')
-    print("---------------------------------------------------------------------------------------")
+    print("---------------------------------------------------------------")
     print("unsold_itemlistの件数", len(unsold_itemlist))
     print(*unsold_itemlist, sep='\n')
 
