@@ -22,14 +22,15 @@
   <!--結果リストのヘッダー部分-->
   <div class="result-header">
     <p>
-      売り切れ商品件数の多い価格帯：<span class="price">{{popular_price}}</span>
+      人気の価格帯：<span class="price">{{popular_price}}</span>
       ～
     </p>
   </div>
   <!--結果リスト-->
   <div class="resul-list">
     <div class="row">
-      {% for name, price, status, url, photo in sold_itemlist %}
+      {% for name, price, status, url, photo in sold_itemlist %} {% if price >=
+      popular_price %}
       <div class="item">
         <a href="{{url}}" target="_blank">
           <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
@@ -39,7 +40,7 @@
           </div>
         </a>
       </div>
-      {% endfor %}
+      {% endif %} {% endfor %}
     </div>
   </div>
   <script>
