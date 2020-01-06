@@ -8,12 +8,12 @@
     type: 'bar',
     data: {
       labels: [
-        {{labelsText|safe}}
+        {{graph_labels|safe}}
       ],
       datasets: [
         {
-          label: '度数',
-          data: [{{dataText|safe}}],
+          label: '件数',
+          data: [{{graph_data|safe}}],
           backgroundColor: 'rgba(219,39,91,0.5)'
         }
       ]
@@ -21,7 +21,7 @@
     options: {
       title: {
         display: true,
-        text: 'グラフタイトル'
+        text: '価格帯別売り切れ商品件数'
       },
       legend: {
         display: false
@@ -30,9 +30,9 @@
         yAxes: [
           {
             ticks: {
-              suggestedMax: {{maxSoldNum|safe}},
+              suggestedMax: {{graph_max|safe}},
               suggestedMin: 0,
-              stepSize: 1,
+              stepSize: {{graph_stepsize|safe}},
               callback: function (value, index, values) {
                 return value + ''
               }

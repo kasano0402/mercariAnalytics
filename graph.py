@@ -61,5 +61,5 @@ def graphdata(list):
     # maxsoldnum
     maxSoldNum = max(data)
 
-    result = [dataText, labelsText, maxSoldNum]
+    result = [dataText, labelsText, maxSoldNum, 1]
     return result

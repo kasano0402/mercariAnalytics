@@ -47,18 +47,22 @@ def search():
     print("unsold_itemlistの件数", len(unsold_itemlist))
     print(*unsold_itemlist, sep='\n')
 
-    # graph.pyの呼び出し
+    # graph.pyを呼び出し&値の受け取り
     graphdata = graph.graphdata(sold_itemlist)
-    dataText = graphdata[0]
-    labelsText = graphdata[1]
-    maxSoldNum = graphdata[2]
+    graph_data = graphdata[0]
+    graph_labels = graphdata[1]
+    graph_max = graphdata[2]
+    graph_stepsize = graphdata[3]
 
-    # priceを3桁区切りに整形
-
-    # print("dataの中身", dataText)
-    # print("labelsTextの中身", labelsText)
     # html呼び出し
-    return render_template('graph.html', keyword=keyword, sold_itemlist=sold_itemlist, unsold_itemlist=unsold_itemlist, dataText=dataText, labelsText=labelsText, maxSoldNum=maxSoldNum)
+    return render_template('graph.html',
+                           keyword=keyword,
+                           sold_itemlist=sold_itemlist,
+                           unsold_itemlist=unsold_itemlist,
+                           graph_data=graph_data,
+                           graph_labels=graph_labels,
+                           graph_max=graph_max,
+                           graph_stepsize=graph_stepsize)
 
 
 if __name__ == "__main__":
