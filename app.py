@@ -46,57 +46,66 @@ def search():
     # 売り切れ商品の取得
     sold_itemlist = scraping.mercariSearch(keyword, category_root,
                                            category_child, search_scope, item_condition, 1)
+    if sold_itemlist != None:
+        # 販売中の商品の取得
+        unsold_itemlist = scraping.mercariSearch(keyword, category_root,
+                                                 category_child, search_scope, item_condition, 0)
+        # 取得内容の並び替え
+        sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
+        unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])
+        # 取得内容確認
+        print("sold_itemlistの件数", len(sold_itemlist))
+        # print(*sold_itemlist, sep='\n')
+        print("---------------------------------------------------------------")
+        print("unsold_itemlistの件数", len(unsold_itemlist))
+        # print(*unsold_itemlist, sep='\n')
 
-    # 販売中の商品の取得
-    unsold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                             category_child, search_scope, item_condition, 0)
+        # graph.pyを呼び出し&値の受け取り
+        graphdata = graph.graphdata(sold_itemlist)
+        graph_data = graphdata[0]
+        graph_labels = graphdata[1]
+        graph_max = graphdata[2]
+        graph_stepsize = graphdata[3]
 
-    # 取得内容の並び替え
-    sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
-    unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])
+        # 購入件数の多い価格帯
+        price_list = graph_labels.split("~'")
+        int_pricelist = []
+        for price in price_list:
+            tmp = price.replace(",", "").replace("'", "")
+            tmp = tmp[1:]
+            if tmp != "":
+                int_pricelist.append(int(tmp))
 
-    # 取得内容確認
-    print("sold_itemlistの件数", len(sold_itemlist))
-    # print(*sold_itemlist, sep='\n')
-    print("---------------------------------------------------------------")
-    print("unsold_itemlistの件数", len(unsold_itemlist))
-    # print(*unsold_itemlist, sep='\n')
+        graph_data_list = graph_data.split(",")
+        int_graph_data_list = []
+        for data in graph_data_list:
+            int_graph_data_list.append(int(data))
 
-    # graph.pyを呼び出し&値の受け取り
-    graphdata = graph.graphdata(sold_itemlist)
-    graph_data = graphdata[0]
-    graph_labels = graphdata[1]
-    graph_max = graphdata[2]
-    graph_stepsize = graphdata[3]
+        popular_price = int_pricelist[int_graph_data_list.index(
+            max(int_graph_data_list))]
 
-    # 購入件数の多い価格帯
-    price_list = graph_labels.split("~'")
-    int_pricelist = []
-    for price in price_list:
-        tmp = price.replace(",", "").replace("'", "")
-        tmp = tmp[1:]
-        if tmp != "":
-            int_pricelist.append(int(tmp))
-
-    graph_data_list = graph_data.split(",")
-    int_graph_data_list = []
-    for data in graph_data_list:
-        int_graph_data_list.append(int(data))
-
-    popular_price = int_pricelist[int_graph_data_list.index(
-        max(int_graph_data_list))]
-
-    # html呼び出し
-    return render_template('graph.html',
-                           title=keyword+"の分析結果",
-                           keyword=keyword,
-                           sold_itemlist=sold_itemlist,
-                           unsold_itemlist=unsold_itemlist,
-                           graph_data=graph_data,
-                           graph_labels=graph_labels,
-                           graph_max=graph_max,
-                           graph_stepsize=graph_stepsize,
-                           popular_price=popular_price)
+        # html呼び出し
+        return render_template('graph.html',
+                               title=keyword+"の分析結果",
+                               keyword=keyword,
+                               sold_itemlist=sold_itemlist,
+                               unsold_itemlist=unsold_itemlist,
+                               graph_data=graph_data,
+                               graph_labels=graph_labels,
+                               graph_max=graph_max,
+                               graph_stepsize=graph_stepsize,
+                               popular_price=popular_price)
+    else:
+        return render_template('graph.html',
+                               title=keyword+"の分析結果",
+                               keyword=keyword,
+                               sold_itemlist=[],
+                               unsold_itemlist=[],
+                               graph_data=[],
+                               graph_labels=[],
+                               graph_max=0,
+                               graph_stepsize=0,
+                               popular_price=0)
 
 
 if __name__ == "__main__":

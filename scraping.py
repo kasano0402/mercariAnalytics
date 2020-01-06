@@ -43,31 +43,38 @@ def mercariSearch(keyword,
 
             # スクレイピング
             soup = bs4.BeautifulSoup(res.text, 'lxml')
+            search_result_description = None
+            search_result_description = soup.select(
+                '.search-result-description')
+            print("search_result_description:", search_result_description)
             elems_name = soup.select('.items-box-name')
             elems_price = soup.select('.items-box-price')
             elems_photo = soup.select('.items-box-photo')
             elems_url = soup.select('.items-box > a')
             elems_photo_url = soup.select('.items-box-photo > img')
 
-            for i in range(len(elems_name)):
-                new_elems_name = elems_name[i].text.replace(",", "")
-                new_elems_price = elems_price[i].text.replace(
-                    ",", "").replace("¥", "")
-                new_elems_photo = re.search(
-                    'figcaption', str(elems_photo[i].__str__))
-                new_elems_url = elems_url[i].get("href")
-                new_elems_photo_url = elems_photo_url[i].get("data-src")
+            if not search_result_description:
+                for i in range(len(elems_name)):
+                    new_elems_name = elems_name[i].text.replace(",", "")
+                    new_elems_price = elems_price[i].text.replace(
+                        ",", "").replace("¥", "")
+                    new_elems_photo = re.search(
+                        'figcaption', str(elems_photo[i].__str__))
+                    new_elems_url = elems_url[i].get("href")
+                    new_elems_photo_url = elems_photo_url[i].get("data-src")
 
-                new_elems_price = int(new_elems_price)
-                # if len(new_elems_name) > 10:
-                # new_elems_name = new_elems_name[0:31]
-                # リストに挿入
-                if new_elems_photo:
-                    resultlist.append(
-                        [new_elems_name.replace("\u3000", ""), new_elems_price, "sold", new_elems_url, new_elems_photo_url])
-                else:
-                    resultlist.append(
-                        [new_elems_name.replace("\u3000", ""), new_elems_price, "", new_elems_url, new_elems_photo_url])
+                    new_elems_price = int(new_elems_price)
+                    # if len(new_elems_name) > 10:
+                    # new_elems_name = new_elems_name[0:31]
+                    # リストに挿入
+                    if new_elems_photo:
+                        resultlist.append(
+                            [new_elems_name.replace("\u3000", ""), new_elems_price, "sold", new_elems_url, new_elems_photo_url])
+                    else:
+                        resultlist.append(
+                            [new_elems_name.replace("\u3000", ""), new_elems_price, "", new_elems_url, new_elems_photo_url])
+            else:
+                resultlist = None
     print("mercariURL:", page)
     return resultlist
 
