@@ -54,6 +54,23 @@ def search():
     graph_max = graphdata[2]
     graph_stepsize = graphdata[3]
 
+    # 購入件数の多い価格帯
+    price_list = graph_labels.split("~'")
+    int_pricelist = []
+    for price in price_list:
+        tmp = price.replace(",", "").replace("'", "")
+        tmp = tmp[1:]
+        if tmp != "":
+            int_pricelist.append(int(tmp))
+
+    graph_data_list = graph_data.split(",")
+    int_graph_data_list = []
+    for data in graph_data_list:
+        int_graph_data_list.append(int(data))
+
+    popular_price = int_pricelist[int_graph_data_list.index(
+        max(int_graph_data_list))]
+
     # html呼び出し
     return render_template('graph.html',
                            keyword=keyword,
@@ -62,7 +79,9 @@ def search():
                            graph_data=graph_data,
                            graph_labels=graph_labels,
                            graph_max=graph_max,
-                           graph_stepsize=graph_stepsize)
+                           graph_stepsize=graph_stepsize,
+                           popular_price=popular_price
+                           )
 
 
 if __name__ == "__main__":

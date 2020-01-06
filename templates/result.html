@@ -21,7 +21,10 @@
   {% block graph %} {% endblock %}
   <!--結果リストのヘッダー部分-->
   <div class="result-header">
-    <p>購入率の高い価格帯： &yen3,000 ～ [[仮置き]]</p>
+    <p>
+      売り切れ商品件数の多い価格帯：<span class="price">{{popular_price}}</span>
+      ～
+    </p>
   </div>
   <!--結果リスト-->
   <div class="resul-list">
@@ -31,7 +34,7 @@
         <a href="{{url}}" target="_blank">
           <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
             <img style="background-image: url({{photo}});" />
-            <span class="itemprice">{{price}}</span>
+            <span class="price">{{price}}</span>
             <span class="itemname">{{name}}</span>
           </div>
         </a>
@@ -47,7 +50,7 @@
       return str
     }
     $(function () {
-      $('.itemprice').each(function () {
+      $('.price').each(function () {
         $(this).html(addFigure($(this).html()))
       })
     })
