@@ -129,6 +129,7 @@ input[type='radio'] {
   width: 100%;
   padding: 10px 0;
   display: none;
+  margin-bottom: 50px;
 }
 .tab_panel p {
   font-size: 14px;
