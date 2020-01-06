@@ -9,6 +9,8 @@ body {
 ------------------------------------ */
 .navbar-default {
   border-top: 1px solid transparent;
+  border-right: 0px;
+  border-radius: 0px;
 }
 
 /* LOGO STYLES
