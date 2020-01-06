@@ -1,0 +1,81 @@
+{% extends "category.html" %} {% block condition %}
+<div class="form-group clearfix">
+  <label>
+    <i class="icon-star"></i>
+    <span>商品の状態</span>
+  </label>
+  <div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="condition_all"
+        id="condition_all"
+        value="1"
+        data-search="all"
+      />
+      <i class="icon-check"></i>
+      <label for="condition_all">すべて</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[1]"
+        id="item_condition_id[1]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[1]">新品、未使用</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[2]"
+        id="item_condition_id[2]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[2]">未使用に近い</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[3]"
+        id="item_condition_id[3]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[3]">目立った傷や汚れなし</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[4]"
+        id="item_condition_id[4]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[4]">やや傷や汚れあり</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[5]"
+        id="item_condition_id[5]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[5]">傷や汚れあり</label>
+    </div>
+    <div class="checkbox-default">
+      <input
+        type="checkbox"
+        name="item_condition_id[6]"
+        id="item_condition_id[6]"
+        value="1"
+      />
+      <i class="icon-check"></i>
+      <label for="item_condition_id[6]">全体的に状態が悪い</label>
+    </div>
+  </div>
+</div>
+{% endblock %}

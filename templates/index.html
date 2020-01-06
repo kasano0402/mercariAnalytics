@@ -14,7 +14,10 @@
       name="keyword"
       placeholder="商品名"
     />
-    {% block select %} {% endblock %}
+    {% block category %}
+    <!-- カテゴリ選択欄 -->
+    {% endblock %}
+
     <a class="submit" align="center">OK</a>
   </form>
 </div>
@@ -22,28 +25,28 @@
 <!--スクリプトの呼び出し-->
 <script src="//www-mercari-jp.akamaized.net/assets/js/app.js?1000309418"></script>
 <script>
-  window.addEventListener("pageshow", function(event) {
+  window.addEventListener('pageshow', function (event) {
     var historyTraversal =
       event.persisted ||
-      (typeof window.performance != "undefined" &&
-        window.performance.navigation.type === 2);
+      (typeof window.performance != 'undefined' &&
+        window.performance.navigation.type === 2)
     if (historyTraversal) {
       //Handle page restore.
-      window.location.reload();
+      window.location.reload()
     }
-  });
-  $(function() {
-    $("#search-form > a").click(function() {
-      if ($("#search-form > input").val() == "") {
-        alert("商品名を入力してください。");
+  })
+  $(function () {
+    $('#search-form > a').click(function () {
+      if ($('#search-form > input').val() == '') {
+        alert('商品名を入力してください。')
       } else {
-        if ($("#search-form > div > div.select-wrap > select").val() == "") {
-          alert("カテゴリを選択してください。");
+        if ($('#search-form > div > div.select-wrap > select').val() == '') {
+          alert('カテゴリを選択してください。')
         } else {
-          $("#search-form").submit();
+          $('#search-form').submit()
         }
       }
-    });
-  });
+    })
+  })
 </script>
 {% endblock %}

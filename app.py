@@ -9,7 +9,7 @@ app = Flask(__name__)
 # 「/」へアクセスがあった場合
 @app.route('/')
 def main():
-    return render_template('category.html', title="mercari analytics")
+    return render_template('condition.html', title="mercari analytics")
 
 # 「/search/」へアクセスがあった場合
 @app.route('/search/', methods=["GET", "POST"])
@@ -18,23 +18,38 @@ def search():
     keyword = request.args.get('keyword')
     category_root = request.args.get('category_root')
     category_child = request.args.get('category_child')
-    # search_scopeの値を変えるとメルカリから取得してくる商品の数が変化します。
-    # search_scope = 1で132件（132件以上商品が存在する場合）
-    # 大きくなればなるほど取得に時間がかかるのでひとまず1でよいかと
-    search_scope = 1
+    item_condition = ""
+    if None != request.args.get("condition_all"):
+        item_condition += "&condition_all=1"
+    if None != request.args.get("item_condition_id[1]"):
+        item_condition += "&item_condition_id[1]=1"
+    if None != request.args.get("item_condition_id[2]"):
+        item_condition += "&item_condition_id[2]=1"
+    if None != request.args.get("item_condition_id[3]"):
+        item_condition += "&item_condition_id[3]=1"
+    if None != request.args.get("item_condition_id[4]"):
+        item_condition += "&item_condition_id[4]=1"
+    if None != request.args.get("item_condition_id[5]"):
+        item_condition += "&item_condition_id[5]=1"
+    if None != request.args.get("item_condition_id[6]"):
+        item_condition += "&item_condition_id[6]=1"
 
     # デバッグ用（getの値が正しく取得できているかどうか）
     print("keyword: ", keyword)
     print("category_root: ", category_root)
     print("category_child: ", category_child)
+    print("item_condition", item_condition)
+
+    # 検索範囲の指定
+    search_scope = 1
 
     # 売り切れ商品の取得
     sold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                           category_child, search_scope, 1)
+                                           category_child, search_scope, item_condition, 1)
 
     # 販売中の商品の取得
     unsold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                             category_child, search_scope, 0)
+                                             category_child, search_scope, item_condition, 0)
 
     # 取得内容の並び替え
     sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
@@ -42,10 +57,10 @@ def search():
 
     # 取得内容確認
     print("sold_itemlistの件数", len(sold_itemlist))
-    print(*sold_itemlist, sep='\n')
+    # print(*sold_itemlist, sep='\n')
     print("---------------------------------------------------------------")
     print("unsold_itemlistの件数", len(unsold_itemlist))
-    print(*unsold_itemlist, sep='\n')
+    # print(*unsold_itemlist, sep='\n')
 
     # graph.pyを呼び出し&値の受け取り
     graphdata = graph.graphdata(sold_itemlist)

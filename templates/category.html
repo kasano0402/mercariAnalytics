@@ -1,4 +1,4 @@
-{% extends "index.html" %} {% block select %}
+{% extends "index.html" %} {% block category %}
 <div class="form-group">
   <div class="select-wrap" data-search="parent">
     <select name="category_root" class="select-default">
@@ -239,4 +239,6 @@
     </div>
   </div>
 </div>
-{% endblock %}
+{% block condition%}
+<!-- 商品の状態チェックボックス -->
+{% endblock %} {% endblock %}
