@@ -7,9 +7,10 @@
 <!--サイトの中身-->
 <div class="input">
   <img class="input-logo" src="static\picture\logo.png" alt="logo" />
-  <form class="form1" action="/search/" method="GET" , id="search-form">
+  <form class="form1" action="/search/" method="GET" , id="form1">
     <input
-      class="input-search"
+      id="keyword"
+      class="search-default"
       type="search"
       name="keyword"
       placeholder="商品名"
@@ -18,7 +19,7 @@
     <!-- カテゴリ選択欄 -->
     {% endblock %}
 
-    <a class="submit" align="center">OK</a>
+    <a class="submit" align="center" id="OK">OK</a>
   </form>
 </div>
 
@@ -36,14 +37,14 @@
     }
   })
   $(function () {
-    $('#search-form > a').click(function () {
-      if ($('#search-form > input').val() == '') {
+    $('#OK').click(function () {
+      if ($('#keyword').val() == '') {
         alert('商品名を入力してください。')
       } else {
-        if ($('#search-form > div > div.select-wrap > select').val() == '') {
+        if ($('#category_root').val() == '') {
           alert('カテゴリを選択してください。')
         } else {
-          $('#search-form').submit()
+          $('#form1').submit()
         }
       }
     })
