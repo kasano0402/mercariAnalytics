@@ -9,7 +9,7 @@ app = Flask(__name__)
 # 「/」へアクセスがあった場合
 @app.route('/')
 def main():
-    return render_template('category.html')
+    return render_template('category.html', title="mercari analytics")
 
 # 「/search/」へアクセスがあった場合
 @app.route('/search/', methods=["GET", "POST"])
@@ -73,6 +73,7 @@ def search():
 
     # html呼び出し
     return render_template('graph.html',
+                           title=keyword+"の分析結果",
                            keyword=keyword,
                            sold_itemlist=sold_itemlist,
                            unsold_itemlist=unsold_itemlist,
