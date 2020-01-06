@@ -80,8 +80,7 @@ def search():
                            graph_labels=graph_labels,
                            graph_max=graph_max,
                            graph_stepsize=graph_stepsize,
-                           popular_price=popular_price
-                           )
+                           popular_price=popular_price)
 
 
 if __name__ == "__main__":
