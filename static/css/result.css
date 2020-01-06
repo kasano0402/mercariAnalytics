@@ -19,11 +19,11 @@ body {
 /* LOGO STYLES
 ------------------------------------ */
 .logo {
-  margin: 15px;
+  margin: 12px;
   float: left;
   display: block;
-  width: 28%;
-  max-width: 170px;
+  width: 24%;
+  max-width: 150px;
 }
 
 /* CONTAINER STYLES
@@ -111,7 +111,7 @@ input[type='radio'] {
   width: 50%;
   display: inline-block;
   margin-bottom: 0px;
-  padding: 15px 0;
+  padding: 13px 0;
   color: #999;
   background: #ddd;
   text-align: center;
@@ -124,12 +124,14 @@ input[type='radio'] {
 }
 .panel_area {
   background: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .tab_panel {
   width: 100%;
   padding: 10px 0;
   display: none;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 .tab_panel p {
   font-size: 14px;
