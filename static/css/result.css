@@ -9,8 +9,11 @@ body {
 ------------------------------------ */
 .navbar-default {
   border-top: 1px solid transparent;
-  border-right: 0px;
+  border: 0px;
   border-radius: 0px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+  margin-bottom: 40px;
 }
 
 /* LOGO STYLES
@@ -90,6 +93,71 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+/* Tab Area
+------------------------------------ */
+
+.tab_wrap {
+  margin: 10px auto;
+}
+input[type='radio'] {
+  display: none;
+}
+.tab_area {
+  font-size: 0;
+  margin: 0px top;
+}
+.tab_area label {
+  width: 50%;
+  display: inline-block;
+  margin-bottom: 0px;
+  padding: 15px 0;
+  color: #999;
+  background: #ddd;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: ease 0.2s opacity;
+}
+.tab_area label:hover {
+  opacity: 0.5;
+}
+.panel_area {
+  background: #fff;
+}
+.tab_panel {
+  width: 100%;
+  padding: 10px 0;
+  display: none;
+}
+.tab_panel p {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#tab1:checked ~ .tab_area .tab1_label {
+  background: #fff;
+  color: #000;
+}
+#tab1:checked ~ .panel_area #panel1 {
+  display: block;
+}
+#tab2:checked ~ .tab_area .tab2_label {
+  background: #fff;
+  color: #000;
+}
+#tab2:checked ~ .panel_area #panel2 {
+  display: block;
+}
+#tab3:checked ~ .tab_area .tab3_label {
+  background: #fff;
+  color: #000;
+}
+#tab3:checked ~ .panel_area #panel3 {
+  display: block;
+}
+
 /* RESPONSIVE STYLES
 ------------------------------------ */
 @media (max-width: 700px) {

@@ -26,35 +26,68 @@
       ～
     </p>
   </div>
-  <!--結果リスト-->
-  <div class="resul-list">
-    <div class="row">
-      {% for name, price, status, url, photo in sold_itemlist %} {% if price >=
-      popular_price %}
-      <div class="item">
-        <a href="{{url}}" target="_blank">
-          <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
-            <img style="background-image: url({{photo}});" />
-            <span class="price">{{price}}</span>
-            <span class="itemname">{{name}}</span>
+  <div class="tab_wrap">
+    <input id="tab1" type="radio" name="tab_btn" checked />
+    <input id="tab2" type="radio" name="tab_btn" />
+    <input id="tab3" type="radio" name="tab_btn" />
+
+    <div class="tab_area">
+      <label class="tab1_label" for="tab1">相場を調べる</label>
+      <label class="tab2_label" for="tab2">買い物をする</label>
+    </div>
+    <div class="panel_area">
+      <div id="panel1" class="tab_panel">
+        <!--結果リスト-->
+        <div class="resul-list">
+          <div class="row">
+            {% for name, price, status, url, photo in sold_itemlist %} {% if
+            price >= popular_price %}
+            <div class="item">
+              <a href="{{url}}" target="_blank">
+                <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                  <img style="background-image: url({{photo}});" />
+                  <span class="price">{{price}}</span>
+                  <span class="itemname">{{name}}</span>
+                </div>
+              </a>
+            </div>
+            {% endif %} {% endfor %}
           </div>
-        </a>
+        </div>
       </div>
-      {% endif %} {% endfor %}
+      <div id="panel2" class="tab_panel">
+        <!--結果リスト-->
+        <div class="resul-list">
+          <div class="row">
+            {% for name, price, status, url, photo in unsold_itemlist %} {% if
+            price >= popular_price %}
+            <div class="item">
+              <a href="{{url}}" target="_blank">
+                <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                  <img style="background-image: url({{photo}});" />
+                  <span class="price">{{price}}</span>
+                  <span class="itemname">{{name}}</span>
+                </div>
+              </a>
+            </div>
+            {% endif %} {% endfor %}
+          </div>
+        </div>
+      </div>
+      <script>
+        function addFigure (str) {
+          var num = new String(str).replace(/,/g, '')
+          while (num != (num = num.replace(/^(-?\d+)(\d{3})/, '$1,$2')));
+          var str = '&yen' + num
+          return str
+        }
+        $(function () {
+          $('.price').each(function () {
+            $(this).html(addFigure($(this).html()))
+          })
+        })
+      </script>
+      {% endblock %}
     </div>
   </div>
-  <script>
-    function addFigure (str) {
-      var num = new String(str).replace(/,/g, '')
-      while (num != (num = num.replace(/^(-?\d+)(\d{3})/, '$1,$2')));
-      var str = '&yen' + num
-      return str
-    }
-    $(function () {
-      $('.price').each(function () {
-        $(this).html(addFigure($(this).html()))
-      })
-    })
-  </script>
-  {% endblock %}
 </div>

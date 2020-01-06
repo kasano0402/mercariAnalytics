@@ -34,7 +34,7 @@ def search():
 
     # 販売中の商品の取得
     unsold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                             category_child, search_scope, 1)
+                                             category_child, search_scope, 0)
 
     # 取得内容の並び替え
     sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
