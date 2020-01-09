@@ -44,7 +44,7 @@
             price >= popular_price %}
             <div class="item">
               <a href="{{url}}" target="_blank">
-                <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-xl-2">
                   <img style="background-image: url({{photo}});" />
                   <span class="price">{{price}}</span>
                   <span class="itemname">{{name}}</span>
@@ -63,7 +63,7 @@
             price >= popular_price %}
             <div class="item">
               <a href="{{url}}" target="_blank">
-                <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-xl-2">
                   <img style="background-image: url({{photo}});" />
                   <span class="price">{{price}}</span>
                   <span class="itemname">{{name}}</span>
@@ -75,17 +75,17 @@
         </div>
       </div>
       <script>
-        function addFigure (str) {
-          var num = new String(str).replace(/,/g, '')
-          while (num != (num = num.replace(/^(-?\d+)(\d{3})/, '$1,$2')));
-          var str = '&yen' + num
-          return str
+        function addFigure(str) {
+          var num = new String(str).replace(/,/g, "");
+          while (num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+          var str = "&yen" + num;
+          return str;
         }
-        $(function () {
-          $('.price').each(function () {
-            $(this).html(addFigure($(this).html()))
-          })
-        })
+        $(function() {
+          $(".price").each(function() {
+            $(this).html(addFigure($(this).html()));
+          });
+        });
       </script>
       {% endblock %}
     </div>
