@@ -9,9 +9,8 @@ def graphdata(list):
     # 最大値を求める
     maxPrice = 0
     soldElements = 0
-    for x in price:
+    for money in price:
         if sold[soldElements] == 'sold':
-            money = int(x)
             if maxPrice <= money:
                 maxPrice = money
         soldElements += 1
@@ -21,18 +20,20 @@ def graphdata(list):
 
     # 階層の数を求める
     soldElements = 0
-    average = int(maxPrice / 10)
+    average = int(maxPrice/10000)
     soldcount = 0
+    average = int((average+1)*1000)
+    print(average)
 
     for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
         hierarchy[i] = hierarchy[i-1]+average
 
-    for x in price:
+    for money in price:
         if sold[soldElements] == 'sold':
             soldcount += 1
-            money = int(x)
-            dataElements = int(money/average)
-            if dataElements != 10:
+            dataElements = int(money / average)
+            print(dataElements)
+            if dataElements < 10:
                 data[dataElements] += 1
             else:
                 data[9] += 1
@@ -59,7 +60,14 @@ def graphdata(list):
     print(labelsText)
 
     # maxsoldnum
-    maxSoldNum = max(data)
+    maxSoldNum = int((max(data)/10 + 1)) *10
 
-    result = [dataText, labelsText, maxSoldNum, 1]
+    stepsize = 5
+
+    if maxSoldNum >= 100:
+        stepsize = 10
+    elif maxSoldNum < 10:
+        stepsize = 1 
+
+    result = [dataText, labelsText, maxSoldNum, stepsize]
     return result
