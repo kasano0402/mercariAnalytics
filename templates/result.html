@@ -44,8 +44,15 @@
             price >= popular_price %}
             <div class="item">
               <a href="{{url}}" target="_blank">
-                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-xl-2">
+                <div
+                  class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3"
+                >
                   <img style="background-image: url({{photo}});" />
+                  <figcaption>
+                    <div class="item-sold-out-badge">
+                      <div class="sold-char">SOLD</div>
+                    </div>
+                  </figcaption>
                   <span class="price">{{price}}</span>
                   <span class="itemname">{{name}}</span>
                 </div>
@@ -63,7 +70,9 @@
             price >= popular_price %}
             <div class="item">
               <a href="{{url}}" target="_blank">
-                <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-xl-2">
+                <div
+                  class="itemcol col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xl-3"
+                >
                   <img style="background-image: url({{photo}});" />
                   <span class="price">{{price}}</span>
                   <span class="itemname">{{name}}</span>
