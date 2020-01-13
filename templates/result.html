@@ -12,11 +12,13 @@
 <!--コンテナ -->
 <div class="container">
   {% if sold_itemlist|length > 120 %}
-  <p class="container-notes">直近{{sold_itemlist|length}}件の売り切れ商品</p>
+  <p class="container-notes">
+    直近{{sold_itemlist|length}}件の売り切れ商品から
+  </p>
   {% else %}
   <p class="container-notes">{{sold_itemlist|length}}件の売り切れ商品</p>
   {% endif %}
-  <p class="container-title"><strong>{{keyword}}</strong>の解析結果</p>
+  <p class="container-title"><strong>{{keyword}}</strong>の分析結果</p>
   <!--グラフエリア-->
   {% block graph %} {% endblock %}
   <!--結果リストのヘッダー部分-->
@@ -37,7 +39,7 @@
     </div>
     <div class="panel_area">
       <div id="panel1" class="tab_panel">
-        <!--結果リスト-->
+        <!--売り切れ商品リスト-->
         <div class="resul-list">
           <div class="row">
             {% for name, price, status, url, photo in sold_itemlist %} {% if
@@ -67,7 +69,7 @@
         </div>
       </div>
       <div id="panel2" class="tab_panel">
-        <!--結果リスト-->
+        <!--販売中商品リスト-->
         <div class="resul-list">
           <div class="row">
             {% for name, price, status, url, photo in unsold_itemlist %} {% if
