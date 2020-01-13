@@ -23,7 +23,7 @@ def graphdata(list):
     average = int(maxPrice/10000)
     soldcount = 0
     average = int((average+1)*1000)
-    print(average)
+    # print(average)
 
     for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
         hierarchy[i] = hierarchy[i-1]+average
@@ -45,7 +45,7 @@ def graphdata(list):
         dataText += str(val)
         dataText += ","
     dataText = dataText[:-1]
-    print(dataText)
+    # print(dataText)
 
     # labelsTextの整形
     labelsText = ""
@@ -57,17 +57,17 @@ def graphdata(list):
         labelsText += "'"
         labelsText += ","
     labelsText = labelsText[:-1]
-    print(labelsText)
+    # print(labelsText)
 
     # maxsoldnum
-    maxSoldNum = int((max(data)/10 + 1)) *10
+    maxSoldNum = int((max(data)/10 + 1)) * 10
 
     stepsize = 5
 
     if maxSoldNum >= 100:
         stepsize = 10
     elif maxSoldNum < 10:
-        stepsize = 1 
+        stepsize = 1
 
     result = [dataText, labelsText, maxSoldNum, stepsize]
     return result
