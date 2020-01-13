@@ -9,7 +9,7 @@ body {
 ------------------------------------ */
 .input {
   background-color: #ffffff;
-  max-width: 450px;
+  max-width: 430px;
   height: auto;
   margin: 7em auto;
   border-radius: 1.5em;
@@ -132,6 +132,6 @@ form.form1 {
 @media (max-width: 600px) {
   .input {
     width: 80%;
-    min-width: 350px;
+    min-width: 430px;
   }
 }
