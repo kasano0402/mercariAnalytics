@@ -7,6 +7,7 @@
 <!--サイトの中身-->
 <div class="input">
   <img class="input-logo" src="static\picture\logo.png" alt="logo" />
+  <p class="site-title">メルカリの価格相場分析アプリ</p>
   <form class="form1" action="/search/" method="GET" , id="form1">
     <input
       id="keyword"
@@ -26,28 +27,29 @@
 <!--スクリプトの呼び出し-->
 <script src="//www-mercari-jp.akamaized.net/assets/js/app.js?1000309418"></script>
 <script>
-  window.addEventListener('pageshow', function (event) {
+  window.addEventListener("pageshow", function(event) {
     var historyTraversal =
       event.persisted ||
-      (typeof window.performance != 'undefined' &&
-        window.performance.navigation.type === 2)
+      (typeof window.performance != "undefined" &&
+        window.performance.navigation.type === 2);
     if (historyTraversal) {
       //Handle page restore.
-      window.location.reload()
+      window.location.reload();
     }
-  })
-  $(function () {
-    $('#OK').click(function () {
-      if ($('#keyword').val() == '') {
-        alert('商品名を入力してください。')
+  });
+  $(function() {
+    $("#OK").click(function() {
+      if ($("#keyword").val() == "") {
+        alert("商品名を入力してください。");
       } else {
-        if ($('#category_root').val() == '') {
-          alert('カテゴリを選択してください。')
+        if ($("#category_root").val() == "") {
+          //alert('カテゴリを選択してください。')
+          $("#form1").submit();
         } else {
-          $('#form1').submit()
+          $("#form1").submit();
         }
       }
-    })
-  })
+    });
+  });
 </script>
 {% endblock %}
