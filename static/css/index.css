@@ -125,14 +125,14 @@ form.form1 {
 }
 
 #display-switch:checked + #conditionlist-wrap {
-  height: 162px;
+  height: 175px;
   opacity: 1;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
 }
 
 .submit {
