@@ -93,8 +93,14 @@ form.form1 {
   display: none;
 }
 
-.select-category-child.is-show {
+.select-category-child.is-show,
+.select-category-grand-child.is-show {
   display: block;
+}
+
+#grand-child-area {
+  margin: 0px auto;
+  width: 76%;
 }
 
 .form-group {
@@ -103,7 +109,7 @@ form.form1 {
 
 #checkbox-area {
   width: 76%;
-  margin: -5px auto 28px;
+  margin: 0px auto 28px;
 }
 
 .checkbox-area-title {
