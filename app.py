@@ -49,11 +49,11 @@ def search():
 
     # 売り切れ商品の取得
     sold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                           category_child, search_scope, item_condition, 1)
-    if sold_itemlist != None:
+                                           category_child, category_grand_child, item_condition, 1, search_scope)
+    if sold_itemlist is not None:
         # 販売中の商品の取得
         unsold_itemlist = scraping.mercariSearch(keyword, category_root,
-                                                 category_child, search_scope, item_condition, 0)
+                                                 category_child, category_grand_child, item_condition, 0, search_scope)
         # 取得内容の並び替え
         sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
         unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])

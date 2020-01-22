@@ -8,17 +8,19 @@ import re
 def mercariSearch(keyword,
                   category_root,
                   category_child,
-                  search_scope,
+                  category_grand_child,
                   item_condition,
-                  sold_flg):
+                  sold_flg,
+                  search_scope):
     """メルカリで検索する関数
     Arguments:
         keyword {string} -- 検索文字列
         category_root {int} -- カテゴリID（親）
         category_child {int} -- カテゴリID（子）
-        search_scope {int} -- 検索範囲
+        category_grand_child -- カテゴリID（孫）
         item_condition{str} -- 商品の状態
         sold_flg {int} -- 抽出条件（0:販売中, 1:売り切れ）
+        search_scope {int} -- 検索範囲
     """
     if sold_flg == 0:
         status_trading_sold_out = 0
@@ -29,8 +31,8 @@ def mercariSearch(keyword,
     keyword = keyword.replace(" ", "+")
     pagelist = []
     for i in range(0, search_scope):
-        page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}&status_trading_sold_out={4}&status_on_sale={5}{6}'.format(
-            str(i), keyword, category_root, category_child, status_trading_sold_out, status_on_sale, item_condition)
+        page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}&status_trading_sold_out={4}&status_on_sale={5}{6}{7}'.format(
+            str(i), keyword, category_root, category_child, status_trading_sold_out, status_on_sale, category_grand_child, item_condition)
         pagelist.append(page)
 
         resultlist = []
