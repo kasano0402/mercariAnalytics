@@ -15,7 +15,7 @@ def graphdata(list):
 
     # 最大値と最小値を求める
     max_price = 0
-    min_price = 0
+    min_price = 99999999
     sold_elements = 0
     for money in price:
         if sold[sold_elements] == 'sold':
@@ -25,14 +25,18 @@ def graphdata(list):
                 min_price = money
         sold_elements += 1
 
-    # print(max_price)
+    print("最大値", max_price)
+    print("最低値", min_price)
+    print(frequency)
     # print(sold)
 
     # 階級幅
     sold_elements = 0
-    average = int((max_price - min_price)/frequency/10000)
+    average = int((max_price - min_price)/10000)
     sold_count = 0
-    average = int((average+1)*10000)
+    print(average)
+    average = int((average+1)*1000)
+    print(average)
 
     for i in range(frequency-1):
         hierarchy[i+1] = hierarchy[i]+average
