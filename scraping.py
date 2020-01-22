@@ -33,6 +33,7 @@ def mercariSearch(keyword,
     for i in range(0, search_scope):
         page = 'https://www.mercari.com/jp/search/?page={0}&sort_order=created_desc&keyword={1}&category_root={2}&category_child={3}&status_trading_sold_out={4}&status_on_sale={5}{6}{7}'.format(
             str(i), keyword, category_root, category_child, status_trading_sold_out, status_on_sale, category_grand_child, item_condition)
+        # print("page: ", page)
         pagelist.append(page)
 
         resultlist = []
