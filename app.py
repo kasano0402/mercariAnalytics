@@ -24,7 +24,7 @@ def search():
     cnt = 0
     while cnt < 3000:
         if None is not request.args.get("category_grand_child[{0}]".format(cnt)):
-            category_grand_child += "&category_grand_child[{0}]".format(cnt)
+            category_grand_child += "&category_grand_child[{0}]=1".format(cnt)
         cnt += 1
 
     # item_conditionチェックボックスの受け取り
@@ -34,7 +34,7 @@ def search():
     cnt = 0
     while cnt <= 6:
         if None is not request.args.get("item_condition_id[{0}]".format(cnt)):
-            item_condition += "&item_condition[{0}]".format(cnt)
+            item_condition += "&item_condition[{0}]=1".format(cnt)
         cnt += 1
 
     # デバッグ用（getの値が正しく取得できているかどうか）
@@ -57,12 +57,15 @@ def search():
         # 取得内容の並び替え
         sold_itemlist = sorted(sold_itemlist, key=lambda x: x[1])
         unsold_itemlist = sorted(unsold_itemlist, key=lambda x: x[1])
+
         # 取得内容確認
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("sold_itemlistの件数", len(sold_itemlist))
-        # print(*sold_itemlist, sep='\n')
-        print("---------------------------------------------------------------")
+        print(*sold_itemlist, sep='\n')
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("unsold_itemlistの件数", len(unsold_itemlist))
-        # print(*unsold_itemlist, sep='\n')
+        print(*unsold_itemlist, sep='\n')
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
         # graph.pyを呼び出し&値の受け取り
         graphdata = graph.graphdata(sold_itemlist)
