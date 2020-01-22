@@ -18,27 +18,31 @@ def search():
     keyword = request.args.get('keyword')
     category_root = request.args.get('category_root')
     category_child = request.args.get('category_child')
+
+    # category_grand_childチェックボックスの受け取り
+    category_grand_child = ""
+    cnt = 0
+    while cnt < 3000:
+        if None is not request.args.get("category_grand_child[{0}]".format(cnt)):
+            category_grand_child += "&category_grand_child[{0}]".format(cnt)
+        cnt += 1
+
+    # item_conditionチェックボックスの受け取り
     item_condition = ""
-    if None != request.args.get("condition_all"):
+    if None is not request.args.get("condition_all"):
         item_condition += "&condition_all=1"
-    if None != request.args.get("item_condition_id[1]"):
-        item_condition += "&item_condition_id[1]=1"
-    if None != request.args.get("item_condition_id[2]"):
-        item_condition += "&item_condition_id[2]=1"
-    if None != request.args.get("item_condition_id[3]"):
-        item_condition += "&item_condition_id[3]=1"
-    if None != request.args.get("item_condition_id[4]"):
-        item_condition += "&item_condition_id[4]=1"
-    if None != request.args.get("item_condition_id[5]"):
-        item_condition += "&item_condition_id[5]=1"
-    if None != request.args.get("item_condition_id[6]"):
-        item_condition += "&item_condition_id[6]=1"
+    cnt = 0
+    while cnt <= 6:
+        if None is not request.args.get("item_condition_id[{0}]".format(cnt)):
+            item_condition += "&item_condition[{0}]".format(cnt)
+        cnt += 1
 
     # デバッグ用（getの値が正しく取得できているかどうか）
     print("keyword: ", keyword)
     print("category_root: ", category_root)
     print("category_child: ", category_child)
-    print("item_condition", item_condition)
+    print("category_grand_child: ", category_grand_child)
+    print("item_condition: ", item_condition)
 
     # 検索範囲の指定
     search_scope = 1
