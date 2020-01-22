@@ -32,7 +32,7 @@ def graphdata(list):
         if sold[soldElements] == 'sold':
             soldcount += 1
             dataElements = int(money / average)
-            print(dataElements)
+            # print(dataElements)
             if dataElements < 10:
                 data[dataElements] += 1
             else:
